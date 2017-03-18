@@ -11,12 +11,12 @@ defmodule Deadwood.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :coyote]]
+    [applications: [:logger]]
   end
 
   defp deps do
     [
-      {:coyote, path: "../../coyote"}
+      {:coyote, path: "../coyote"}
     ]
   end
 end

@@ -1,14 +1,15 @@
-defmodule Deadwood.Client do
-  use Coyote.Client
+defmodule Deadwood do
+  use Application
 
-  routes do
-    [
-      {:GET, "/"}
+  def start(_type, _args) do
+    import Supervisor.Spec, warn: false
+
+    children = [
+      worker(Deadwood.Saloon, [])
     ]
-  end
 
-  def call({:GET, "/"}, _from, state) do
-    {:reply, "Hello!", state}
+    opts = [strategy: :one_for_one, name: Deadwood.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 
 end
