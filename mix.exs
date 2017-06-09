@@ -7,12 +7,11 @@ defmodule Deadwood.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps()]
   end
 
-  def application do
-    [applications: [:logger]]
-  end
+  def application,
+    do: [applications: [:logger], mod: {Deadwood, []}]
 
   defp deps do
     [
